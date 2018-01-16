@@ -1,0 +1,14 @@
+﻿@model IEnumerable<GummiBear.Models.Products>
+@{
+    ViewData["Title"] = "Products Page";
+}
+
+
+
+    <h4>@Html.DisplayNameFor(model => model.Name)</h4>
+    <ul>
+        @foreach(var product in Model)
+        {
+            <li>@Html.DisplayFor(modelProduct => product.Name)</li>
+        }
+    </ul>

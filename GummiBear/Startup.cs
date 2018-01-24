@@ -18,9 +18,9 @@ namespace GummiBear
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
-                //.AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
-                //.AddEnvironmentVariables(); //TAKE THIS LINE OUT PER LESSON??/*
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddEnvironmentVariables(); //TAKE THIS LINE OUT PER LESSON??/*
             Configuration = builder.Build();
         }
 

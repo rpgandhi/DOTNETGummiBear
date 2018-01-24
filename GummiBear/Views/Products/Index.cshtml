@@ -1,14 +1,23 @@
-﻿@model IEnumerable<GummiBear.Models.Products>
+﻿@using GummiBear.Models
+
+@model IEnumerable<GummiBear.Models.Product>
 @{
     ViewData["Title"] = "Products Page";
 }
 
 
 
-    <h4>@Html.DisplayNameFor(model => model.Name)</h4>
+    <!--<h4>@Html.DisplayNameFor(model => model.Name)</h4>-->
     <ul>
         @foreach(var product in Model)
         {
-            <li>@Html.DisplayFor(modelProduct => product.Name)</li>
+            <li>@Html.DisplayFor(modelProduct => product.Name)
+                @Html.ActionLink("Details", "Details", new { id = product.ProductId })
+                |  @Html.ActionLink("Edit", "Edit", new { id = product.ProductId })
+                | @Html.ActionLink("Delete", "Delete", new { id = product.ProductId })
+            </li>
+    
         }
     </ul>
+
+   <p>@Html.ActionLink("Add new item", "Create")</p>

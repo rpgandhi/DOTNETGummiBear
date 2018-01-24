@@ -1,0 +1,43 @@
+﻿@model GummiBear.Models.Review
+<!--@model GummiBear.Models.Product-->
+
+<html>
+  <head>
+    <title>Gummi Bear Kingdom - New Review</title>
+  </head>
+  <body>
+    <h2>Review</h2>
+    <hr />
+    <h4>Add a new product review</h4>
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(model => model.Review.ProductId)
+        
+        @Html.LabelFor(model => model.Review.Title)
+        @Html.TextBoxFor(model => model.Review.Title)
+        
+        @Html.LabelFor(model => model.Review.Author)
+        @Html.TextBoxFor(model => model.Review.Author)
+        
+        @Html.LabelFor(model => model.Review.Content)
+        @Html.TextBoxFor(model => model.Review.Content)
+
+        @Html.LabelFor(model => model.Review.Rating)
+        @Html.DropDownListFor(model => model.Review.Rating,
+            newSelectList(
+                new List <Review>{
+                    new { value = 1 , text = "1"},
+                    new { value = 2 , text = "2"},
+                    new { value = 3 , text = "3"},
+                    new { value = 4 , text = "4"},
+                    new { value = 5 , text = "5"}
+                },
+                "value",
+                "text",
+                model.Review.Rating))
+        
+        <input type="submit" value="Add new review" />
+    }
+    <p>@Html.ActionLink("Back to list", "Index")</p>
+  </body>
+</html>

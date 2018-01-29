@@ -6,8 +6,10 @@
 }
 <h2>Product Details</h2>
 <hr />
-<p>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)</p>
-<p>@Html.DisplayNameFor(model => model.Cost): @Html.DisplayFor(model => model.Cost)</p>
-<p>@Html.DisplayNameFor(model => model.GetAverage): @Html.DisplayFor(model => model.GetAverage)</p>
-<p>@Html.DisplayNameFor(model => model.Reviews) : @Html.DisplayFor(model => model.Reviews)</p>
-<p>@Html.ActionLink("Add new review", "Create", new { id = @currentReview.ProductId} )</p>       
+
+<h2>@Model.Name</h2>
+
+<p>@Model.Cost</p>
+<p>@Model.Description</p>
+<p>Product.averageRating</p>                                     
+

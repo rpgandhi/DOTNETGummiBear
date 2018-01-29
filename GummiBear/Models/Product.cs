@@ -25,12 +25,13 @@ namespace GummiBear.Models
             double averageRating = 0.0;
             if (Reviews.Count > 0)
             {
-                foreach (Review review in Reviews)
+                foreach (var review in Reviews)
                 {
                     averageRating += review.Rating;
                 }
-                averageRating = Math.Round(averageRating / Reviews.Count, 1);
+                averageRating = Math.Round(averageRating / Reviews.Count);
             }
+          
             return averageRating;
         }
     }

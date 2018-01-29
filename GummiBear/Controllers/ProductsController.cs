@@ -21,11 +21,16 @@ namespace GummiBear.Controllers
         public IActionResult Details(int id)
         {
             Product thisProduct = db.Products.FirstOrDefault(products => products.ProductId == id);
+            if (thisProduct.Reviews != null)
+            {
+                thisProduct.GetAverage();
+            }
             return View(thisProduct);
         }
 
         public IActionResult Create()
         {
+            
             return View();
         }
 

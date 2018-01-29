@@ -25,4 +25,9 @@
     <Folder Include="Views\Products\" />
     <Folder Include="Views\Reviews\" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Migrations\20180124233702_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20180124233702_Initial.cs" />
+    <Compile Remove="Migrations\GummiBearContextModelSnapshot.cs" />
+  </ItemGroup>
 </Project>

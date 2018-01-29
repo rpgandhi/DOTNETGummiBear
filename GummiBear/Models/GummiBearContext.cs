@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace GummiBear.Models
 {
@@ -22,9 +24,19 @@ namespace GummiBear.Models
         {
         }
 
-        protected override void OnModelCreating(ModelBuilder builder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(builder);
+            modelBuilder.Entity<Product>()
+                   //.HasOne(z => z.Product)
+                   .HasMany(c => c.Reviews)
+                   .WithOne(e => e.Product)
+                        .OnDelete(DeleteBehavior.Cascade)
+                      
+                   .IsRequired();
+
+            //base.OnModelCreating(builder);
         }
+
+
     }
 }

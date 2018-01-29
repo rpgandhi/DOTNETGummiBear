@@ -1,0 +1,42 @@
+﻿@model GummiBear.Models.Review
+@{
+    ViewData["Title"] = "Add Review";
+}
+
+<html>
+  <head>
+    <title>Gummi Bear Kingdom - New Review</title>
+  </head>
+  <body>
+             
+    <h2>Review</h2>
+    <hr />
+        <p>hiiii @ViewBag.ProductId</p>
+    <h4>Add a new product review</h4>
+    @using (Html.BeginForm())
+    {
+        
+       
+        <input id="ProductId" name="ProductId" value=@ViewBag.ProductId type="hidden">        
+        @Html.LabelFor(model => model.Title)
+        @Html.TextBoxFor(model => model.Title)
+        <br>
+        @Html.LabelFor(model => model.Author)
+        @Html.TextBoxFor(model => model.Author)
+        <br>
+        @Html.LabelFor(model => model.Content)
+        @Html.TextBoxFor(model => model.Content)
+        <br>
+        @Html.LabelFor(model => model.Rating)  
+        <p>Please enter a rating from 1-5 NEW</p>   
+        <input id="Rating" name="Rating" value=model.Rating type="number" min="1" max="5">
+        <br>
+        <br>
+        
+        
+        <input type="submit" value="Add new review" />
+    }
+    <p>@Html.ActionLink("Back to list", "Index")</p>
+
+  </body>
+</html>

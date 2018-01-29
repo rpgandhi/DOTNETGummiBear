@@ -1,14 +1,13 @@
 ﻿@model GummiBear.Models.Product
 
-<html>
-<head>
-    <title>Gummi Bear Kingdom Products - Details</title>
-</head>
-<body>
-    <h2>Details</h2>
-    <hr />
-    @Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)
-    @Html.DisplayNameFor(model => model.Reviews)
-    <p>@Html.ActionLink("Back to list", "Index")</p>
-</body>
-</html>
+@{
+    ViewData["Title"] = "Gummi Bear Kingdom Products - Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";                   
+}
+<h2>Product Details</h2>
+<hr />
+<p>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)</p>
+<p>@Html.DisplayNameFor(model => model.Cost): @Html.DisplayFor(model => model.Cost)</p>
+<p>@Html.DisplayNameFor(model => model.GetAverage): @Html.DisplayFor(model => model.GetAverage)</p>
+<p>@Html.DisplayNameFor(model => model.Reviews) : @Html.DisplayFor(model => model.Reviews)</p>
+<p>@Html.ActionLink("Add new review", "Create", new { id = @currentReview.ProductId} )</p>       

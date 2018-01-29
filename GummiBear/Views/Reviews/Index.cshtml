@@ -1,0 +1,27 @@
+﻿@model IEnumerable<GummiBear.Models.Review>
+
+<html>
+<head>
+    <title>Gummi Bear Kingdom Reviews</title>
+</head>
+<body>
+    <h2>Reviews</h2>
+   <p> @Html.ActionLink("Go back", "Index", "Products")</p>
+                
+       
+        @foreach(var listReview in Model)              
+        {
+            <h3>@Html.DisplayFor(modelReview => listReview.Product.Name)</h3>
+            <p>Title: @Html.DisplayFor(modelReview => listReview.Title)</p>
+            <p>Author: @Html.DisplayFor(modelReview => listReview.Author)</p>
+            <p>Comments: @Html.DisplayFor(modelReview => listReview.Content)</p>
+            <p>User Rating: @Html.DisplayFor(modelReview => listReview.Rating)</p>
+            <p>Product Id: @Html.DisplayFor(modelReview => listReview.ProductId)</p>
+        
+            <p>@Html.ActionLink("Add new review", "Create", new { id = @listReview.ProductId} )</p>
+
+        }
+
+    
+</body>
+</html>

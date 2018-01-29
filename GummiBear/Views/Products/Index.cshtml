@@ -15,9 +15,9 @@
                 @Html.ActionLink("Details", "Details", new { id = product.ProductId })
                 |  @Html.ActionLink("Edit", "Edit", new { id = product.ProductId })
                 | @Html.ActionLink("Delete", "Delete", new { id = product.ProductId })
+                 |  @Html.ActionLink("Reviews", "Index", "Reviews", new { id = product.ProductId}) 
             </li>
-    
         }
     </ul>
 
-   <p>@Html.ActionLink("Add new item", "Create")</p>
+   <p>@Html.ActionLink("Add new product", "Create")</p>

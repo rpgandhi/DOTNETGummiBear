@@ -15,8 +15,8 @@
             <p>Title: @Html.DisplayFor(modelReview => listReview.Title)</p>
             <p>Author: @Html.DisplayFor(modelReview => listReview.Author)</p>
             <p>Comments: @Html.DisplayFor(modelReview => listReview.Content)</p>
-            <p>User Rating: @Html.DisplayFor(modelReview => listReview.Rating)</p>
-            <p>Product Id: @Html.DisplayFor(modelReview => listReview.ProductId)</p>
+            <p>User Rating: @Html.DisplayFor(modelReview => listReview.Rating)/5 </p>                   
+            <p>@Html.HiddenFor(modelReview => listReview.ProductId)</p>
         
             <p>@Html.ActionLink("Add new review", "Create", new { id = @listReview.ProductId} )</p>
 

@@ -12,14 +12,33 @@ namespace GummiBear.Controllers
 {
     public class ReviewsController : Controller
     {
-       private GummiBearContext db = new GummiBearContext();
+        private IReviewRepository reviewRepo;
+
+        public ReviewsController(IReviewRepository repo = null)
+        {
+            if (repo == null)
+            {
+                this.reviewRepo = new EFReviewRepository();
+            }
+            else
+            {
+                this.reviewRepo = repo;
+            }
+        }
+
 
        public IActionResult Index(int id)
         {
             Console.WriteLine("this is the index method " + id);
-            return View(db.Reviews.Where(reviews => reviews.ProductId == id).ToList());
+            return View(reviewRepo.Reviews.Where(reviews => reviews.ProductId == id).ToList());
             //return View();
         }
+
+        //public ViewResult Index()
+        //{
+        //    // Updated:
+        //    return View(reviewRepo.Reviews.ToList());
+        //}
 
         public IActionResult Create(int id)
         {
@@ -33,9 +52,9 @@ namespace GummiBear.Controllers
         public IActionResult Create(Review review)
         {
             Console.WriteLine("##########################" + review.ProductId);
-            db.Reviews.Add(review);
+            //reviewRepo.Reviews.Add(review);
             Console.WriteLine(review);
-            db.SaveChanges();
+            reviewRepo.Save(review);
             Console.WriteLine(review);
             return RedirectToAction("Index", "Products", new { area=""});
         }

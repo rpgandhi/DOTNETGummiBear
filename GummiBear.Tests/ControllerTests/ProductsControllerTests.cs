@@ -12,7 +12,7 @@ namespace GummiBear.Tests.ControllerTests
 {
 
     [TestClass]
-    public class ProductsControllerTests : IDisposable
+    public class ProductsControllerTests
     {
         Mock<IProductRepository> mock = new Mock<IProductRepository>();
        
@@ -27,13 +27,20 @@ namespace GummiBear.Tests.ControllerTests
                     Description = "Large bag of strawberry gummi bears"},
                 new Product {ProductId = 3, Name ="Licorice Gummi Bears", Cost = 8,
                     Description = "Small bag of licorice gummi bears" }
-            }.AsQueryable());
+        }.AsQueryable());
         }
 
 
-        public void Dispose()
+        [TestMethod]
+        public void Mock_GetViewResultIndex_ActionResult()
         {
-            db.DeleteAll();
+            DbSetup();
+            ProductsController controller = new ProductsController(mock.Object);
+
+            var result = controller.Index();
+
+            Assert.IsInstanceOfType(result, typeof(ActionResult));
         }
+
     }
 }

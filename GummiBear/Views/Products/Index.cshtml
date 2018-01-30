@@ -6,12 +6,14 @@
 }
 
 
+<h3>Products</h3>  
 
-    <!--<h4>@Html.DisplayNameFor(model => model.Name)</h4>-->
+<div class="container" id="productDetails">
+ 
     <ul>
         @foreach(var product in Model)
         {
-            <li>@Html.DisplayFor(modelProduct => product.Name)
+            <li><strong>@Html.DisplayFor(modelProduct => product.Name)</strong>       
                 @Html.ActionLink("Details", "Details", new { id = product.ProductId })
                 |  @Html.ActionLink("Edit", "Edit", new { id = product.ProductId })
                 | @Html.ActionLink("Delete", "Delete", new { id = product.ProductId })
@@ -19,5 +21,7 @@
             </li>
         }
     </ul>
-
+</div>
    <p>@Html.ActionLink("Add new product", "Create")</p>
+
+ </div>        

@@ -26,6 +26,12 @@ namespace GummiBear.Controllers
             }
         }
 
+        //public ViewResult Index()
+        //{
+        //    // Updated:
+        //    return View(productRepo.Products.ToList());
+        //}
+
 
         public IActionResult Index()
         {

@@ -44,3 +44,9 @@ textarea {
     min-height: 360px;
 
 }
+
+#productDetails {
+    
+    padding-top: 40px;     
+    padding-bottom: 40px;     
+}

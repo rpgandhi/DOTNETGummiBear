@@ -5,21 +5,35 @@ using GummiBear.Models;
 using GummiBear.Controllers;
 using Moq;
 using System.Linq;
+using System.Diagnostics;
+using System;
 
-namespace ToDoList.Tests.ControllerTests
+namespace GummiBear.Tests.ControllerTests
 {
 
     [TestClass]
-    public class ItemsControllerTests
+    public class ProductsControllerTests : IDisposable
     {
-        Mock<IItemRepository> mock = new Mock<IItemRepository>();
+        Mock<IProductRepository> mock = new Mock<IProductRepository>();
+       
 
         private void DbSetup()
         {
-            mock.Setup(m => m.Items).Returns(new Item[]
+            mock.Setup(m => m.Products).Returns(new Product[]
             {
-                new Item {ItemId = 1, Description = "Wash the dog" },
-                new Item {ItemId = 2, Description = "Do the dishes" },
-                new Item {ItemId = 3, Description = "Sweep the floor" }
+                new Product {ProductId = 1, Name = "Cinnamon Gummi Bears", Cost = 8,
+                    Description = "Small bag of cinnamon gummi bears" },
+                new Product {ProductId = 2, Name = "Strawberry Gummi Bears", Cost = 10,
+                    Description = "Large bag of strawberry gummi bears"},
+                new Product {ProductId = 3, Name ="Licorice Gummi Bears", Cost = 8,
+                    Description = "Small bag of licorice gummi bears" }
             }.AsQueryable());
         }
+
+
+        public void Dispose()
+        {
+            db.DeleteAll();
+        }
+    }
+}

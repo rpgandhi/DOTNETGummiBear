@@ -18,6 +18,25 @@ namespace GummiBear.Models
         public double AverageRating { get; set; }
 
 
+        public override bool Equals(System.Object obj)
+        {
+            if (!(obj is Product))
+            {
+                return false;
+            }
+            else
+            {
+                Product newProduct = (Product)obj;
+                return this.ProductId.Equals(newProduct.ProductId);
+            }
+        }
+
+        public override int GetHashCode()
+        {
+            return this.ProductId.GetHashCode();
+        }
+
+
         public void GetAverage()
         {
             double averageRating = 0.0;

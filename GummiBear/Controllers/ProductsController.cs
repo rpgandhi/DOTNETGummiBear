@@ -6,15 +6,17 @@ using Microsoft.AspNetCore.Mvc;
 using GummiBear.Models;
 using Microsoft.EntityFrameworkCore;
 
+
+
 namespace GummiBear.Controllers
 {
     public class ProductsController : Controller
     {
         private IProductRepository productRepo;
 
-        public ProductsController(IProductRepository repo = null
+        public ProductsController(IProductRepository repo = null)
         {
-            if(repo == null)
+            if (repo == null)
             {
                 this.productRepo = new EFProductRepository();
             }
@@ -22,34 +24,33 @@ namespace GummiBear.Controllers
             {
                 this.productRepo = repo;
             }
-
-        public ViewResult Index()
-        {
-                return View(productRepo.Products.ToList());
         }
+
 
         public IActionResult Index()
         {
-                //List<Product> model = db.Products.ToList();
-                //return View(model);
-                return View(productRepo.Products.ToList());
+            //List<Product> model = db.Products.ToList();
+            //return View(model);
+            return View(productRepo.Products.ToList());
         }
 
         public IActionResult Details(int id)
         {
-            Product thisProduct = productRepo.Products.FirstOrDefault(products => products.ProductId == id);
+            Product thisProduct = productRepo.Products.Include(p => p.Reviews)
+                                             .FirstOrDefault(products => products.ProductId == id);
             if (thisProduct.Reviews.Count() > 0)
             {
-              thisProduct.GetAverage();
+                thisProduct.GetAverage();
             }
             return View(thisProduct);
         }
 
         public IActionResult Create()
         {
-            
+
             return View();
         }
+
 
         [HttpPost]
         public IActionResult Create(Product product)
@@ -92,3 +93,4 @@ namespace GummiBear.Controllers
         }
     }
 }
+

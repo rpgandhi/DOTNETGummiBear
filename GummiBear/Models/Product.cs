@@ -8,19 +8,17 @@ namespace GummiBear.Models
     [Table("Products")]
     public class Product
     {
-        public Product()
-        {
-            this.Reviews = new HashSet<Review>();
-        }
+
         [Key]
         public int ProductId { get; set; }
         public string Name { get; set; }
         public int Cost { get; set; }
         public string Description { get; set; }
         public virtual ICollection<Review> Reviews { get; set; }
+        public double AverageRating { get; set; }
 
 
-        public double GetAverage()
+        public void GetAverage()
         {
             double averageRating = 0.0;
             if (Reviews.Count > 0)
@@ -29,10 +27,10 @@ namespace GummiBear.Models
                 {
                     averageRating += review.Rating;
                 }
-                averageRating = Math.Round(averageRating / Reviews.Count);
+                averageRating = (averageRating / Reviews.Count);
             }
-          
-            return averageRating;
+
+            AverageRating = averageRating;
         }
     }
 }

@@ -14,6 +14,7 @@ namespace GummiBear.Migrations
                 {
                     ProductId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGeneratedOnAdd", true),
+                    AverageRating = table.Column<double>(nullable: false),
                     Cost = table.Column<int>(nullable: false),
                     Description = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true)
@@ -32,6 +33,7 @@ namespace GummiBear.Migrations
                     Author = table.Column<string>(nullable: true),
                     Content = table.Column<string>(nullable: true),
                     ProductId = table.Column<int>(nullable: false),
+                    Rating = table.Column<int>(nullable: false),
                     Title = table.Column<string>(nullable: true)
                 },
                 constraints: table =>

@@ -16,5 +16,19 @@ namespace GummiBear.Models
 
         public int ProductId { get; set; }
         public virtual Product Product { get; set; }
+
+
+
+        public bool ContentBodyLength()
+        {
+            if (Content.Length > 255)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 }

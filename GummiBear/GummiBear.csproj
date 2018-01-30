@@ -24,10 +24,13 @@
     <Folder Include="Models\" />
     <Folder Include="Views\Products\" />
     <Folder Include="Views\Reviews\" />
+    <Folder Include="Models\Repositories\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Migrations\20180124233702_Initial.Designer.cs" />
     <Compile Remove="Migrations\20180124233702_Initial.cs" />
     <Compile Remove="Migrations\GummiBearContextModelSnapshot.cs" />
+    <Compile Remove="Migrations\20180127223357_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20180127223357_Initial.cs" />
   </ItemGroup>
 </Project>
